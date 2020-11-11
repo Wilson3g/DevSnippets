@@ -1,0 +1,11 @@
+
+
+{% block content %}
+    <h1>Novo Post</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="waves-effect waves-light btn">Publicar</button>
+    </form>
+{% endblock %}
