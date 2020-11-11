@@ -1,10 +1,12 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
 from django.views.generic import (
     ListView, 
     DetailView,
     CreateView
 )
 from .models import Post
+from .forms import PostForm
 
 
 class HomeView(ListView):
@@ -20,4 +22,13 @@ class DetailView(DetailView):
 class AddPostView(CreateView):
     model = Post
     template_name = 'new_post.html'
-    fields = '__all__'
+    form_class = PostForm
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        form.instance.author = User.objects.get(id=1)
+        
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
