@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ post.id|yesno:'Editar Post,Novo Post' }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="waves-effect waves-light btn">{{ post.id|yesno:'Atualizar,Publicar' }}</button>
+    </form>
+{% endblock %}

@@ -13,4 +13,7 @@ class Post(models.Model):
         return self.title + ' | ' + str(self.author)
 
     def get_absolute_url(self):
-        return reverse('detail_post', args=[str(self.id)])
+        return reverse('update_post', args=[str(self.id)])
+
+    def get_success_url(self):
+        return reverse('home')
