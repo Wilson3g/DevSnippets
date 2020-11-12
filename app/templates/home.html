@@ -3,20 +3,20 @@
 {% block content %}
 
 {% for post in object_list %}
-    <a href="{% url 'detail_post' post.pk %}"> 
-        <div class="row">
-            <div class="col s12 m6">
-              <div class="card">
-                <div class="card-content">
-                    <h3>{{ post.title }}</h3>
-                  <p>{{ post.author }}</p>
-                </div>
-                <a href="{% url 'update_post' post.id %}">Editar</a>
-                <a href="{% url 'delete_post' post.id %}">Excluir</a>
-              </div>
-            </div>
+  <a href="{% url 'detail_post' post.pk %}"> 
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content">
+            <p>{{ post.author }} - {{ post.created_at }}</p>
+            <h3>{{ post.title }}</h3>
+          </div>
+          <a href="{% url 'update_post' post.id %}">Editar</a>
+          <a href="{% url 'delete_post' post.id %}">Excluir</a>
         </div>
-    </a>
+      </div>
+    </div>
+  </a>
 
 {% endfor %}
 {% endblock %}

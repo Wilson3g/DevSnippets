@@ -9,11 +9,13 @@ from django.views.generic import (
 )
 from .models import Post
 from .forms import PostForm
+from django.urls import reverse_lazy
 
 
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
+    ordering = ['-created_at'] 
 
 
 class DetailView(DetailView):
@@ -45,3 +47,4 @@ class UpdatePostView(UpdateView):
 class DeletePostView(DeleteView):
     model = Post
     template_name = 'post_confirm_delete.html'
+    success_url = reverse_lazy('home')
