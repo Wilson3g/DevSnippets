@@ -7,5 +7,5 @@
     <h1>{{ post.title }}</h1>
     <p>Por: {{ post.author }}</p>
     <hr>
-    <p>{{ post.body }}</p>
+    <p>{{ post.body|safe }}</p>
 {% endblock %}

@@ -7,8 +7,8 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Post
-from .forms import PostForm
+from .models import Post, Category
+from .forms import PostForm, CategoryForm
 from django.urls import reverse_lazy
 
 
@@ -48,3 +48,26 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'post_confirm_delete.html'
     success_url = reverse_lazy('home')
+
+
+class ListCategoryView(ListView):
+    model = Category
+    template_name = 'list_category.html'
+
+
+class AddCategoryView(CreateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'form_category.html'
+
+
+class UpdateCategoryView(UpdateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'form_category.html'
+
+
+class DeleteCategoryView(DeleteView):
+    model = Category
+    template_name = 'category_confirm_delete.html'
+    success_url = reverse_lazy('list_category')
